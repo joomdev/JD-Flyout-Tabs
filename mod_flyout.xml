@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.0" client="site" method="upgrade">
+	<name>JD Flyout Tabs</name>
+	<creationDate>April 2012</creationDate>
+	<version>1.2.0</version>
+	<author>JoomDev (Formerly GraphicAholic)</author>
+	<copyright>Copyright (C) 2020 Joomdev, Inc. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later</license>
+	<authorEmail>info@joomdev.com</authorEmail>
+	<authorUrl>https://www.joomdev.com</authorUrl>
+	<description>
+	<![CDATA[
+		<div class="alert alert-info" style="font-weight: normal;">
+			<img src="../modules/mod_flyout/images/FlyoutTabs.jpg" alt="Flyout Tabs"/>
+			<h3>JD Flyout Tabs</h3>
+			<p>You can use JD Flyout Tabs to display a series of tabbed images on the left or right hand side of your browser that will 'flyout' when you hover your mouse over them.</p>
+			<p>JD Flyout Tabs formerly known as Flyout Tabs from Graphicaholic is now moved to JoomDev along with other Extensions. <strong>Check out the <a href="https://www.joomdev.com/graphicaholic" target="_blank">Announcement here.</a></strong></p>
+			<a href="https://www.joomdev.com/forum/jd-flyout-tabs" target="_blank">Support</a> | <span>Demo</span> | <a href="https://www.joomdev.com/products/extensions/jd-flyout-tabs" target="_blank">More Details</a>
+		</div>
+	]]>
+	</description>
+	<files>
+		<filename module="mod_flyout">mod_flyout.php</filename>
+		<filename>mod_flyout.xml</filename>
+		<filename>index.html</filename>
+		<filename>mod_flyout_imagefolder.php</filename>
+		<folder>css</folder>
+		<folder>fields</folder>
+		<folder>images</folder>
+		<folder>js</folder>
+	</files>
+
+	<updateservers>
+		<server type="extension" priority="1" name="JD Flyout Tabs">https://joomdev.com/updates/flyout.xml</server>
+	</updateservers>
+
+	<config>
+		<fields name="params" addfieldpath="/modules/mod_flyout/fields">
+			<fieldset name="style" group="style" label="Style Settings">
+				<field name="screenPosition" type="list" default="1" label="Tabs position" description="">
+					<option value="Left">Left side of screen</option>
+					<option value="LeftDS">Left side of screen with Dropshadow effect</option>
+					<option value="Right">Right side of screen</option>
+					<option value="RightDS">Right side of screen with Dropshadow effect</option>
+				</field>
+				<field name="tabColor" type="truecolors" default="rgb(207,207,207,1)" label="Inside Tab Color-Idel" format="rgb" opacity="1.0" description="Click to choose your custom JD Flyout Tabs color in idel state." />
+				<field name="tabBorder" type="truecolors" default="rgb(175,175,175,1)" label="Border Tab Color-Idel" format="rgb" opacity="1.0" description="Click to choose your custom JD Flyout Tabs border color in idel state." />
+				<field name="tabColorhover" type="truecolors" default="rgb(207,207,207,1)" label="Inside Tab Color-Hover" format="rgb" opacity="1.0" description="Click to choose your custom JD Flyout Tabs color on mouseover." />
+				<field name="tabBorderhover" type="truecolors" default="rgb(175,175,175,1)" label="Border Tab Color-Hover" format="rgb" opacity="1.0" description="Click to choose your custom JD Flyout Tabs border color on mouseover." />
+				<field name="tabPosition" type="text" size="10" default="50px" label="JD Flyout Tabs Top Position" description="Adjust the JD Flyout Tabs position from top of page." />
+				<field name="tabWidth" type="text" size="10" default="100px" label="JD Flyout Tabs Width" description="Adjust the JD Flyout Tabs width." />
+				<field name="tabHeight" type="text" size="10" default="65px" label="JD Flyout Tabs Height" description="Adjust the JD Flyout Tabs height." />
+				<field name="tabLeftSet" showon="screenPosition:Left,LeftDS" type="text" size="10" default="-40px" label="JD Flyout Tabs Left Offset" description="Adjust the JD Flyout Tabs left offset to show more or less of each tab. The higher the minus value, the less the entire tab will show on your screen." />
+				<field name="tabRightSet" showon="screenPosition:Right,RightDS" type="text" size="10" default="-0px" label="JD Flyout Tabs Right Offset" description="Adjust the JD Flyout Tabs right offset to show more or less of each tab. The higher the minus value, the more the entire tab will show on your screen. The higher the value without the minus symbol, the less the entire tab will show on your screen" />
+				<field name="imagePosition" type="text" size="10" default="20px" label="Image Position" description="Adjust the 'left-right' image position within the tabs. (default=20px)." />
+				<field name="imageTopPosition" type="text" size="10" default="0px" label="Top Image Position" description="Adjust the 'Top' image position within the tabs. (default=0px)." />
+				<field name="tabLeftMargin" showon="screenPosition:Left,LeftDS" type="text" size="10" default="-2px" label="Left margin on mouseover" description="Adjusts the left margin position on mouseover. Some professional templates require this setting to be adjusted as much as -20px." />
+				<field name="tabRightMargin" showon="screenPosition:Right,RightDS" type="text" size="10" default="-60px" label="Right margin on mouseover" description="Adjusts the right margin position on mouseover. Some professional templates require this setting to be adjusted as much as -80px." />
+				<field name="tabSpacing" type="text" size="10" default="73px" label="Spacing between tabs" description="Adjust for amount of spacing in-between tabs." />
+				<field name="position" type="radio" class="btn-group" default="1" label="Tab Behavior" description="Choose the 'Scroll with template' option if the number of useable tabs extends below the bottom of your page.">
+					<option value="1">Fixed position</option>
+					<option value="2">Scroll with template</option>
+				</field>
+			</fieldset>
+			<fieldset name="tabs" group="tabs" label="Tab Settings">
+				<field name="info1" type="info" default="You may display up to 15 JD Flyout Tabs. Leave 'Image path' empty to exclude a specific Flyout Tab from showing." />
+				<field name="spacer1" type="gaspacer" label="1st Flyout Tab Settings" style="title" />
+				<field name="useTab1Text" class="btn-group" type="radio" default="0" label="Add text to this tab?" description="">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="image1title" showon="useTab1Text:1" type="text" size="45" default="" label="Title for Tab 1" description="Name for this menu tab - Leave blank if you are not using a Title Text in your tab." />
+				<field name="title1Position" showon="useTab1Text:1" type="text" default="-15px" label="Left-Right title position" description="Slightly increase or decrease this minus pixel setting to position title text as needed." />
+				<field name="title1aPosition" showon="useTab1Text:1" type="text" default="-40px" label="Top-Bottom title position" description="Slightly increase or decrease this minus pixel setting to position title text as needed." />
+				<field name="title1Color" showon="useTab1Text:1" type="truecolors" default="" label="Title color" format="rgb" opacity="1.0" description="Adjust as needed." />
+				<field name="image1url" type="media" size="45" default="images/flyout/home.png" label="Image path for Tab 1" description="Does not support images stored away from your Joomla installation." />
+				<field name="image1link" type="text" size="45" default="use relative or absolute path" label="Hyperlink for Tab 1" description="Use either a relative or absolute hyperlink path for your JD Flyout Tabs." />
+				<field name="link1" type="list" default="1" label="Link Behaviour" description="Select how you want to open your link.">
+					<option value="1">Same Window</option>
+					<option value="2">New Window</option>
+					<option value="3">URL In Lightbox</option>
+					<option value="4">Image In Lightbox</option>
+				</field>
+				<field name="pop1Width" type="text" size="45" default="400" label="Width of URL" description="NOTE: Functions only for URL links" />
+				<field name="pop1Height" type="text" size="45" default="400" label="Height of URL" description="NOTE: Functions only for URL links" />
+				<field name="spacer2" type="gaspacer" label="2nd JD Flyout Tabs Settings" style="title" />
+				<field name="useTab2Text" class="btn-group" type="radio" default="0" label="Add text to this tab?" description="">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="image2title" showon="useTab2Text:1" type="text" default="" label="Title for Tab 2" description="Name for this menu tab - Leave blank if you are not using a Title Text in your tab." />
+				<field name="title2Position" showon="useTab2Text:1" type="text" default="-15px" label="Left-Right title position" description="Slightly increase or decrease this minus pixel setting to position title text as needed." />
+				<field name="title2aPosition" showon="useTab2Text:1" type="text" default="-40px" label="Top-Bottom title position" description="Slightly increase or decrease this minus pixel setting to position title text as needed." />
+				<field name="title2Color" showon="useTab2Text:1" type="truecolors" default="" label="Title color" format="rgb" opacity="1.0" description="Adjust as needed." />
+				<field name="image2url" type="media" size="45" default="" label="Image path for Tab 2" description="Use a relative path to your JD Flyout Tabs graphic. PLEASE NOTE: Do not use a leading '/' at the beginning of your image path. Does not support images stored away from your Joomla installation." />
+				<field name="image2link" type="text" size="45" default="use relative or absolute path" label="Hyperlink for Tab 2" description="Use either a relative or absolute hyperlink path for your JD Flyout Tabs." />
+				<field name="link2" type="list" default="1" label="Link Behaviour" description="Select how you want to open your link.">
+					<option value="1">Same Window</option>
+					<option value="2">New Window</option>
+					<option value="3">URL In Lightbox</option>
+					<option value="4">Image In Lightbox</option>
+				</field>
+				<field name="pop2Width" type="text" size="45" default="400" label="Width of URL" description="NOTE: Functions only for URL links" />
+				<field name="pop2Height" type="text" size="45" default="400" label="Height of URL" description="NOTE: Functions only for URL links" />
+				<field name="spacer3" type="gaspacer" label="3rd JD Flyout Tab Settings" style="title" />
+				<field name="useTab3Text" class="btn-group" type="radio" default="0" label="Add text to this tab?" description="">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="image3title" showon="useTab3Text:1" type="text" default="" label="Title for Tab 3" description="Name for this menu tab - Leave blank if you are not using a Title Text in your tab." />
+				<field name="title3Position" showon="useTab3Text:1" type="text" default="-15px" label="Left-Right title position" description="Slightly increase or decrease this minus pixel setting to position title text as needed." />
+				<field name="title3aPosition" showon="useTab3Text:1" type="text" default="-40px" label="Top-Bottom title position" description="Slightly increase or decrease this minus pixel setting to position title text as needed." />
+				<field name="title3Color" showon="useTab3Text:1" type="truecolors" default="" label="Title color" format="rgb" opacity="1.0" description="Adjust as needed." />
+				<field name="image3url" type="media" size="45" default="" label="Image path for Tab 3" description="Use a relative path to your JD Flyout Tabs graphic. PLEASE NOTE: Do not use a leading '/' at the beginning of your image path. Does not support images stored away from your Joomla installation." />
+				<field name="image3link" type="text" size="45" default="use relative or absolute path" label="Hyperlink for Tab 3" description="Use either a relative or absolute hyperlink path for your JD Flyout Tabs." />
+				<field name="link3" type="list" default="1" label="Link Behaviour" description="Select how you want to open your link.">
+					<option value="1">Same Window</option>
+					<option value="2">New Window</option>
+					<option value="3">URL In Lightbox</option>
+					<option value="4">Image In Lightbox</option>
+				</field>
+				<field name="pop3Width" type="text" size="45" default="400" label="Width of URL" description="NOTE: Functions only for URL links" />
+				<field name="pop3Height" type="text" size="45" default="400" label="Height of URL" description="NOTE: Functions only for URL links" />
+				<field name="spacer4" type="gaspacer" label="4th JD Flyout Tab Settings" style="title" />
+				<field name="useTab4Text" class="btn-group" type="radio" default="0" label="Add text to this tab?" description="">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="image4title" showon="useTab4Text:1" type="text" default="" label="Title for Tab 4" description="Name for this menu tab - Leave blank if you are not using a Title Text in your tab." />
+				<field name="title4Position" showon="useTab4Text:1" type="text" default="-15px" label="Left-Right title position" description="Slightly increase or decrease this minus pixel setting to position title text as needed." />
+				<field name="title4aPosition" showon="useTab4Text:1" type="text" default="-40px" label="Top-Bottom title position" description="Slightly increase or decrease this minus pixel setting to position title text as needed." />
+				<field name="title4Color" showon="useTab4Text:1" type="truecolors" default="" label="Title color" format="rgb" opacity="1.0" description="Adjust as needed." />
+				<field name="image4url" type="media" size="45" default="" label="Image path for Tab 4" description="Use a relative path to your JD Flyout Tabs graphic. PLEASE NOTE: Do not use a leading '/' at the beginning of your image path. Does not support images stored away from your Joomla installation." />
+				<field name="image4link" type="text" size="45" default="use relative or absolute path" label="Hyperlink for Tab 4" description="Use either a relative or absolute hyperlink path for your JD Flyout Tabs." />
+				<field name="link4" type="list" default="1" label="Link Behaviour" description="Select how you want to open your link.">
+					<option value="1">Same Window</option>
+					<option value="2">New Window</option>
+					<option value="3">URL In Lightbox</option>
+					<option value="4">Image In Lightbox</option>
+				</field>
+				<field name="pop4Width" type="text" size="45" default="400" label="Width of URL" description="NOTE: Functions only for URL links" />
+				<field name="pop4Height" type="text" size="45" default="400" label="Height of URL" description="NOTE: Functions only for URL links" />
+				<field name="spacer5" type="gaspacer" label="5th JD Flyout Tab Settings" style="title" />
+				<field name="useTab5Text" class="btn-group" type="radio" default="0" label="Add text to this tab?" description="">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="image5title" showon="useTab5Text:1" type="text" default="" label="Title for Tab 5" description="Name for this menu tab - Leave blank if you are not using a Title Text in your tab." />
+				<field name="title5Position" showon="useTab5Text:1" type="text" default="-15px" label="Left-Right title position" description="Slightly increase or decrease this minus pixel setting to position title text as needed." />
+				<field name="title5aPosition" showon="useTab5Text:1" type="text" default="-40px" label="Top-Bottom title position" description="Slightly increase or decrease this minus pixel setting to position title text as needed." />
+				<field name="title5Color" showon="useTab5Text:1" type="truecolors" default="" label="Title color" format="rgb" opacity="1.0" description="Adjust as needed." />
+				<field name="image5url" type="media" size="45" default="" label="Image path for Tab 5" description="Use a relative path to your JD Flyout Tabs graphic. PLEASE NOTE: Do not use a leading '/' at the beginning of your image path. Does not support images stored away from your Joomla installation." />
+				<field name="image5link" type="text" size="45" default="use relative or absolute path" label="Hyperlink for Tab 5" description="Use either a relative or absolute hyperlink path for your JD Flyout Tabs." />
+				<field name="link5" type="list" default="1" label="Link Behaviour" description="Select how you want to open your link.">
+					<option value="1">Same Window</option>
+					<option value="2">New Window</option>
+					<option value="3">URL In Lightbox</option>
+					<option value="4">Image In Lightbox</option>
+				</field>
+				<field name="pop5Width" type="text" size="45" default="400" label="Width of URL" description="NOTE: Functions only for URL links" />
+				<field name="pop5Height" type="text" size="45" default="400" label="Height of URL" description="NOTE: Functions only for URL links" />
+				<field name="spacer6" type="gaspacer" label="6th JD Flyout Tab Settings" style="title" />
+				<field name="useTab6Text" class="btn-group" type="radio" default="0" label="Add text to this tab?" description="">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="image6title" showon="useTab6Text:1" type="text" default="" label="Title for Tab 6" description="Name for this menu tab - Leave blank if you are not using a Title Text in your tab." />
+				<field name="title6Position" showon="useTab6Text:1" type="text" default="-15px" label="Left-Right title position" description="Slightly increase or decrease this minus pixel setting to position title text as needed." />
+				<field name="title6aPosition" showon="useTab6Text:1" type="text" default="-40px" label="Top-Bottom title position" description="Slightly increase or decrease this minus pixel setting to position title text as needed." />
+				<field name="title6Color" showon="useTab6Text:1" type="truecolors" default="" label="Title color" format="rgb" opacity="1.0" description="Adjust as needed." />
+				<field name="image6url" type="media" size="45" default="" label="Image path for Tab 6" description="Use a relative path to your JD Flyout Tabs graphic. PLEASE NOTE: Do not use a leading '/' at the beginning of your image path. Does not support images stored away from your Joomla installation." />
+				<field name="image6link" type="text" size="45" default="use relative or absolute path" label="Hyperlink for Tab 6" description="Use either a relative or absolute hyperlink path for your JD Flyout Tabs." />
+				<field name="link6" type="list" default="1" label="Link Behaviour" description="Select how you want to open your link.">
+					<option value="1">Same Window</option>
+					<option value="2">New Window</option>
+					<option value="3">URL In Lightbox</option>
+					<option value="4">Image In Lightbox</option>
+				</field>
+				<field name="pop6Width" type="text" size="45" default="400" label="Width of URL" description="NOTE: Functions only for URL links" />
+				<field name="pop6Height" type="text" size="45" default="400" label="Height of URL" description="NOTE: Functions only for URL links" />
+				<field name="spacer7" type="gaspacer" label="7th JD Flyout Tab Settings" style="title" />
+				<field name="useTab7Text" class="btn-group" type="radio" default="0" label="Add text to this tab?" description="">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="image7title" showon="useTab7Text:1" type="text" default="" label="Title for Tab 7" description="Name for this menu tab - Leave blank if you are not using a Title Text in your tab." />
+				<field name="title7Position" showon="useTab7Text:1" type="text" default="-15px" label="Left-Right title position" description="Slightly increase or decrease this minus pixel setting to position title text as needed." />
+				<field name="title7aPosition" showon="useTab7Text:1" type="text" default="-40px" label="Top-Bottom title position" description="Slightly increase or decrease this minus pixel setting to position title text as needed." />
+				<field name="title7Color" showon="useTab7Text:1" type="truecolors" default="" label="Title color" format="rgb" opacity="1.0" description="Adjust as needed." />
+				<field name="image7url" type="media" size="45" default="" label="Image path for Tab 7" description="Use a relative path to your JD Flyout Tabs graphic. PLEASE NOTE: Do not use a leading '/' at the beginning of your image path. Does not support images stored away from your Joomla installation." />
+				<field name="image7link" type="text" size="45" default="use relative or absolute path" label="Hyperlink for Tab 7" description="Use either a relative or absolute hyperlink path for your JD Flyout Tabs." />
+				<field name="link7" type="list" default="1" label="Link Behaviour" description="Select how you want to open your link.">
+					<option value="1">Same Window</option>
+					<option value="2">New Window</option>
+					<option value="3">URL In Lightbox</option>
+					<option value="4">Image In Lightbox</option>
+				</field>
+				<field name="pop7Width" type="text" size="45" default="400" label="Width of URL" description="NOTE: Functions only for URL links" />
+				<field name="pop7Height" type="text" size="45" default="400" label="Height of URL" description="NOTE: Functions only for URL links" />
+				<field name="spacer8" type="gaspacer" label="8th JD Flyout Tab Settings" style="title" />
+				<field name="useTab8Text" class="btn-group" type="radio" default="0" label="Add text to this tab?" description="">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="image8title" showon="useTab8Text:1" type="text" default="" label="Title for Tab 8" description="Name for this menu tab - Leave blank if you are not using a Title Text in your tab." />
+				<field name="title8Position" showon="useTab8Text:1" type="text" default="-15px" label="Left-Right title position" description="Slightly increase or decrease this minus pixel setting to position title text as needed." />
+				<field name="title8aPosition" showon="useTab8Text:1" type="text" default="-40px" label="Top-Bottom title position" description="Slightly increase or decrease this minus pixel setting to position title text as needed." />
+				<field name="title8Color" showon="useTab8Text:1" type="truecolors" default="" label="Title color" format="rgb" opacity="1.0" description="Adjust as needed." />
+				<field name="image8url" type="media" size="45" default="" label="Image path for Tab 8" description="Use a relative path to your JD Flyout Tabs graphic. PLEASE NOTE: Do not use a leading '/' at the beginning of your image path. Does not support images stored away from your Joomla installation." />
+				<field name="image8link" type="text" size="45" default="use relative or absolute path" label="Hyperlink for Tab 8" description="Use either a relative or absolute hyperlink path for your JD Flyout Tabs." />
+				<field name="link8" type="list" default="1" label="Link Behaviour" description="Select how you want to open your link.">
+					<option value="1">Same Window</option>
+					<option value="2">New Window</option>
+					<option value="3">URL In Lightbox</option>
+					<option value="4">Image In Lightbox</option>
+				</field>
+				<field name="pop8Width" type="text" size="45" default="400" label="Width of URL" description="NOTE: Functions only for URL links" />
+				<field name="pop8Height" type="text" size="45" default="400" label="Height of URL" description="NOTE: Functions only for URL links" />
+				<field name="spacer9" type="gaspacer" label="9th JD Flyout Tab Settings" style="title" />
+				<field name="useTab9Text" class="btn-group" type="radio" default="0" label="Add text to this tab?" description="">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="image9title" showon="useTab9Text:1" type="text" default="" label="Title for Tab 9" description="Name for this menu tab - Leave blank if you are not using a Title Text in your tab." />
+				<field name="title9Position" showon="useTab9Text:1" type="text" default="-15px" label="Left-Right title position" description="Slightly increase or decrease this minus pixel setting to position title text as needed." />
+				<field name="title9aPosition" showon="useTab9Text:1" type="text" default="-40px" label="Top-Bottom title position" description="Slightly increase or decrease this minus pixel setting to position title text as needed." />
+				<field name="title9Color" showon="useTab9Text:1" type="truecolors" default="" label="Title color" format="rgb" opacity="1.0" description="Adjust as needed." />
+				<field name="image9url" type="media" size="45" default="" label="Image path for Tab 9" description="Use a relative path to your JD Flyout Tabs graphic. PLEASE NOTE: Do not use a leading '/' at the beginning of your image path. Does not support images stored away from your Joomla installation." />
+				<field name="image9link" type="text" size="45" default="use relative or absolute path" label="Hyperlink for Tab 9" description="Use either a relative or absolute hyperlink path for your JD Flyout Tabs." />
+				<field name="link9" type="list" default="1" label="Link Behaviour" description="Select how you want to open your link.">
+					<option value="1">Same Window</option>
+					<option value="2">New Window</option>
+					<option value="3">URL In Lightbox</option>
+					<option value="4">Image In Lightbox</option>
+				</field>
+				<field name="pop9Width" type="text" size="45" default="400" label="Width of URL" description="NOTE: Functions only for URL links" />
+				<field name="pop9Height" type="text" size="45" default="400" label="Height of URL" description="NOTE: Functions only for URL links" />
+				<field name="spacer10" type="gaspacer" label="10th JD Flyout Tab Settings" style="title" />
+				<field name="useTab10Text" class="btn-group" type="radio" default="0" label="Add text to this tab?" description="">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="image10title" showon="useTab10Text:1" type="text" default="" label="Title for Tab 10" description="Name for this menu tab - Leave blank if you are not using a Title Text in your tab." />
+				<field name="title10Position" showon="useTab10Text:1" type="text" default="-15px" label="Left-Right title position" description="Slightly increase or decrease this minus pixel setting to position title text as needed." />
+				<field name="title10aPosition" showon="useTab10Text:1" type="text" default="-40px" label="Top-Bottom title position" description="Slightly increase or decrease this minus pixel setting to position title text as needed." />
+				<field name="title10Color" showon="useTab10Text:1" type="truecolors" default="" label="Title color" format="rgb" opacity="1.0" description="Adjust as needed." />
+				<field name="image10url" type="media" size="45" default="" label="Image path for Tab 10" description="Use a relative path to your JD Flyout Tabs graphic. PLEASE NOTE: Do not use a leading '/' at the beginning of your image path. Does not support images stored away from your Joomla installation." />
+				<field name="image10link" type="text" size="45" default="use relative or absolute path" label="Hyperlink for Tab 10" description="Use either a relative or absolute hyperlink path for your JD Flyout Tabs." />
+				<field name="link10" type="list" default="1" label="Link Behaviour" description="Select how you want to open your link.">
+					<option value="1">Same Window</option>
+					<option value="2">New Window</option>
+					<option value="3">URL In Lightbox</option>
+					<option value="4">Image In Lightbox</option>
+				</field>
+				<field name="pop10Width" type="text" size="45" default="400" label="Width of URL" description="NOTE: Functions only for URL links" />
+				<field name="pop10Height" type="text" size="45" default="400" label="Height of URL" description="NOTE: Functions only for URL links" />
+				<field name="spacer11" type="gaspacer" label="11th JD Flyout Tab Settings" style="title" />
+				<field name="useTab11Text" class="btn-group" type="radio" default="0" label="Add text to this tab?" description="">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="image11title" showon="useTab11Text:1" type="text" default="" label="Title for Tab 11" description="Name for this menu tab - Leave blank if you are not using a Title Text in your tab." />
+				<field name="title11Position" showon="useTab11Text:1" type="text" default="-15px" label="Left-Right title position" description="Slightly increase or decrease this minus pixel setting to position title text as needed." />
+				<field name="title11aPosition" showon="useTab11Text:1" type="text" default="-40px" label="Top-Bottom title position" description="Slightly increase or decrease this minus pixel setting to position title text as needed." />
+				<field name="title11Color" showon="useTab11Text:1" type="truecolors" default="" label="Title color" format="rgb" opacity="1.0" description="Adjust as needed." />
+				<field name="image11url" type="media" size="45" default="" label="Image path for Tab 11" description="Use a relative path to your JD Flyout Tabs graphic. PLEASE NOTE: Do not use a leading '/' at the beginning of your image path. Does not support images stored away from your Joomla installation." />
+				<field name="image11link" type="text" size="45" default="use relative or absolute path" label="Hyperlink for Tab 11" description="Use either a relative or absolute hyperlink path for your JD Flyout Tabs." />
+				<field name="link11" type="list" default="1" label="Link Behaviour" description="Select how you want to open your link.">
+					<option value="1">Same Window</option>
+					<option value="2">New Window</option>
+					<option value="3">URL In Lightbox</option>
+					<option value="4">Image In Lightbox</option>
+				</field>
+				<field name="pop11Width" type="text" size="45" default="400" label="Width of URL" description="NOTE: Functions only for URL links" />
+				<field name="pop11Height" type="text" size="45" default="400" label="Height of URL" description="NOTE: Functions only for URL links" />
+				<field name="spacer12" type="gaspacer" label="12th JD Flyout Tab Settings" style="title" />
+				<field name="useTab12Text" class="btn-group" type="radio" default="0" label="Add text to this tab?" description="">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="image12title" showon="useTab12Text:1" type="text" default="" label="Title for Tab 12" description="Name for this menu tab - Leave blank if you are not using a Title Text in your tab." />
+				<field name="title12Position" showon="useTab12Text:1" type="text" default="-15px" label="Left-Right title position" description="Slightly increase or decrease this minus pixel setting to position title text as needed." />
+				<field name="title12aPosition" showon="useTab12Text:1" type="text" default="-40px" label="Top-Bottom title position" description="Slightly increase or decrease this minus pixel setting to position title text as needed." />
+				<field name="title12Color" showon="useTab12Text:1" type="truecolors" default="" label="Title color" format="rgb" opacity="1.0" description="Adjust as needed." />
+				<field name="image12url" type="media" size="45" default="" label="Image path for Tab 12" description="Use a relative path to your JD Flyout Tabs graphic. PLEASE NOTE: Do not use a leading '/' at the beginning of your image path. Does not support images stored away from your Joomla installation." />
+				<field name="image12link" type="text" size="45" default="use relative or absolute path" label="Hyperlink for Tab 12" description="Use either a relative or absolute hyperlink path for your JD Flyout Tabs." />
+				<field name="link12" type="list" default="1" label="Link Behaviour" description="Select how you want to open your link.">
+					<option value="1">Same Window</option>
+					<option value="2">New Window</option>
+					<option value="3">URL In Lightbox</option>
+					<option value="4">Image In Lightbox</option>
+				</field>
+				<field name="pop12Width" type="text" size="45" default="400" label="Width of URL" description="NOTE: Functions only for URL links" />
+				<field name="pop12Height" type="text" size="45" default="400" label="Height of URL" description="NOTE: Functions only for URL links" />
+				<field name="spacer13" type="gaspacer" label="13th JD Flyout Tab Settings" style="title" />
+				<field name="useTab13Text" class="btn-group" type="radio" default="0" label="Add text to this tab?" description="">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="image13title" showon="useTab13Text:1" type="text" default="" label="Title for Tab 13" description="Name for this menu tab - Leave blank if you are not using a Title Text in your tab." />
+				<field name="title13Position" showon="useTab13Text:1" type="text" default="-15px" label="Left-Right title position" description="Slightly increase or decrease this minus pixel setting to position title text as needed." />
+				<field name="title13aPosition" showon="useTab13Text:1" type="text" default="-40px" label="Top-Bottom title position" description="Slightly increase or decrease this minus pixel setting to position title text as needed." />
+				<field name="title13Color" showon="useTab13Text:1" type="truecolors" default="" label="Title color" format="rgb" opacity="1.0" description="Adjust as needed." />
+				<field name="image13url" type="media" size="45" default="" label="Image path for Tab 13" description="Use a relative path to your JD Flyout Tabs graphic. PLEASE NOTE: Do not use a leading '/' at the beginning of your image path. Does not support images stored away from your Joomla installation." />
+				<field name="image13link" type="text" size="45" default="use relative or absolute path" label="Hyperlink for Tab 13" description="Use either a relative or absolute hyperlink path for your JD Flyout Tabs." />
+				<field name="link13" type="list" default="1" label="Link Behaviour" description="Select how you want to open your link.">
+					<option value="1">Same Window</option>
+					<option value="2">New Window</option>
+					<option value="3">URL In Lightbox</option>
+					<option value="4">Image In Lightbox</option>
+				</field>
+				<field name="pop13Width" type="text" size="45" default="400" label="Width of URL" description="NOTE: Functions only for URL links" />
+				<field name="pop13Height" type="text" size="45" default="400" label="Height of URL" description="NOTE: Functions only for URL links" />
+				<field name="spacer14" type="gaspacer" label="14th JD Flyout Tab Settings" style="title" />
+				<field name="useTab14Text" class="btn-group" type="radio" default="0" label="Add text to this tab?" description="">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="image14title" showon="useTab14Text:1" type="text" default="" label="Title for Tab 14" description="Name for this menu tab - Leave blank if you are not using a Title Text in your tab." />
+				<field name="title14Position" showon="useTab14Text:1" type="text" default="-15px" label="Left-Right title position" description="Slightly increase or decrease this minus pixel setting to position title text as needed." />
+				<field name="title14aPosition" showon="useTab14Text:1" type="text" default="-40px" label="Top-Bottom title position" description="Slightly increase or decrease this minus pixel setting to position title text as needed." />
+				<field name="title14Color" showon="useTab14Text:1" type="truecolors" default="" label="Title color" format="rgb" opacity="1.0" description="Adjust as needed." />
+				<field name="image14url" type="media" size="45" default="" label="Image path for Tab 14" description="Use a relative path to your JD Flyout Tabs graphic. PLEASE NOTE: Do not use a leading '/' at the beginning of your image path. Does not support images stored away from your Joomla installation." />
+				<field name="image14link" type="text" size="45" default="use relative or absolute path" label="Hyperlink for Tab 14" description="Use either a relative or absolute hyperlink path for your JD Flyout Tabs." />
+				<field name="link14" type="list" default="1" label="Link Behaviour" description="Select how you want to open your link.">
+					<option value="1">Same Window</option>
+					<option value="2">New Window</option>
+					<option value="3">URL In Lightbox</option>
+					<option value="4">Image In Lightbox</option>
+				</field>
+				<field name="pop14Width" type="text" size="45" default="400" label="Width of URL" description="NOTE: Functions only for URL links" />
+				<field name="pop14Height" type="text" size="45" default="400" label="Height of URL" description="NOTE: Functions only for URL links" />
+				<field name="spacer15" type="gaspacer" label="15th JD Flyout Tab Settings" style="title" />
+				<field name="useTab15Text" class="btn-group" type="radio" default="0" label="Add text to this tab?" description="">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="image15title" showon="useTab15Text:1" type="text" default="" label="Title for Tab 15" description="Name for this menu tab - Leave blank if you are not using a Title Text in your tab." />
+				<field name="title15Position" showon="useTab15Text:1" type="text" default="-15px" label="Left-Right title position" description="Slightly increase or decrease this minus pixel setting to position title text as needed." />
+				<field name="title15aPosition" showon="useTab15Text:1" type="text" default="-40px" label="Top-Bottom title position" description="Slightly increase or decrease this minus pixel setting to position title text as needed." />
+				<field name="title15Color" showon="useTab15Text:1" type="truecolors" default="" label="Title color" format="rgb" opacity="1.0" description="Adjust as needed." />
+				<field name="image15url" type="media" size="45" default="" label="Image path for Tab 15" description="Use a relative path to your JD Flyout Tabs graphic. PLEASE NOTE: Do not use a leading '/' at the beginning of your image path. Does not support images stored away from your Joomla installation." />
+				<field name="image15link" type="text" size="45" default="use relative or absolute path" label="Hyperlink for Tab 15" description="Use either a relative or absolute hyperlink path for your JD Flyout Tabs." />
+				<field name="link15" type="list" default="1" label="Link Behaviour" description="Select how you want to open your link.">
+					<option value="1">Same Window</option>
+					<option value="2">New Window</option>
+					<option value="3">URL In Lightbox</option>
+					<option value="4">Image In Lightbox</option>
+				</field>
+				<field name="pop15Width" type="text" size="45" default="400" label="Width of URL" description="NOTE: Functions only for URL links" />
+				<field name="pop15Height" type="text" size="45" default="400" label="Height of URL" description="NOTE: Functions only for URL links" />
+			</fieldset>
+			<fieldset name="advanced" group="advanced">
+				<field name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="fieldMODULECLASSSUFFIX" />
+				<field name="cache" type="radio" class="btn-group" default="1" label="Caching" description="Select whether to cache the content of this module">
+					<option value="1">Use global</option>
+					<option value="0">No caching</option>
+				</field>
+				<field name="cache_time" type="text" default="900" label="Cache Time" description="The time before the module is recached" />
+				<field name="documentation" type="docs" default="900" label="" description="" />
+			</fieldset>
+		</fields>
+	</config>
+	<scriptfile>mod_flyout_imagefolder.php</scriptfile>
+</extension>
